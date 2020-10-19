@@ -1,0 +1,10 @@
+pipeline:
+
+  build:
+    image: docker
+    environment:
+      - DOCKER_HOST=tcp://172.17.0.1:2375
+    commands:
+      - docker build -t dns-test:$${DRONE_COMMIT_SHA} .
+    when:
+      event: push
